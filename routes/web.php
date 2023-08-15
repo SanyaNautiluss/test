@@ -26,6 +26,13 @@ Route::middleware('auth')->group(function () {
 
     Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
 
+    Route::get('answer', [\App\Http\Controllers\AnswerController::class, 'index'])->name('admin.answer');
+    Route::get('category', [\App\Http\Controllers\CategoryController::class, 'index'])->name('admin.category');
+    Route::get('question', [\App\Http\Controllers\QuestionController::class, 'index'])->name('admin.question');
+    Route::get('result', [\App\Http\Controllers\ResultController::class, 'index'])->name('admin.result');
+    Route::get('test', [\App\Http\Controllers\TestController::class, 'index'])->name('admin.test');
+
+
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 });
