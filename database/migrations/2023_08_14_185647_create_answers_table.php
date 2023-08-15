@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Question;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,12 +12,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('statistics', function (Blueprint $table) {
+        Schema::create('answers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('test_id')->nullable()->constrained()->cascadeOnDelete();
-            $table->foreignId('answer_id')->nullable()->constrained()->cascadeOnDelete();
-            $table->unsignedInteger('time_taken_minutes');
+            $table->unsignedBigInteger('question_id');
+            $table->text('answer');
+            $table->boolean('is_correct');
             $table->timestamps();
+            $table->foreign('question_id')->references('id')->on('questions');
         });
     }
 
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('statistics');
+        Schema::dropIfExists('answers');
     }
 };
