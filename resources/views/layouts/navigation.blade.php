@@ -8,6 +8,7 @@
             data-accordion="false">
             <li class="nav-item">
                 <a href="{{ route('users.index') }}" class="nav-link">
+                    <i class="nav-icon fas fa-handshake"></i>
                     <p>
                         {{ __('Users') }}
                     </p>
@@ -15,7 +16,7 @@
             </li>
 
             <li class="nav-item">
-                <a href="{{ route('admin.category') }}" class="nav-link">
+                <a href="{{ route('admin.categories.index') }}" class="nav-link">
                     <i class="nav-icon fas fa-microchip"></i>
                     <p>
                         {{ __('Categories') }}
@@ -24,7 +25,7 @@
             </li>
 
             <li class="nav-item">
-                <a href="{{ route('admin.test') }}" class="nav-link">
+                <a href="{{ route('admin.tests.index') }}" class="nav-link">
                     <i class="nav-icon fas fa-file-alt"></i>
                     <p>
                         {{ __('Tests') }}
@@ -33,7 +34,16 @@
             </li>
 
             <li class="nav-item">
-                <a href="{{ route('admin.question') }}" class="nav-link">
+                <a href="{{ route('admin.category_tests.index') }}" class="nav-link">
+                    <i class="nav-icon fas fa-microchip"></i>
+                    <p>
+                        {{ __('Category_tests') }}
+                    </p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="{{ route('admin.questions.index') }}" class="nav-link">
                     <i class="nav-icon fas fa-copy"></i>
                     <p>
                         {{ __('Questions') }}
@@ -42,7 +52,7 @@
             </li>
 
             <li class="nav-item">
-                <a href="{{ route('admin.answer') }}" class="nav-link">
+                <a href="{{ route('admin.answers.index') }}" class="nav-link">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
                         {{ __('Answers') }}
@@ -51,7 +61,7 @@
             </li>
 
             <li class="nav-item">
-                <a href="{{ route('admin.result') }}" class="nav-link">
+                <a href="{{ route('admin.results.index') }}" class="nav-link">
                     <i class="far fa-envelope"></i>
                     <p>
                         {{ __('Results') }}

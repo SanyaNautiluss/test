@@ -8,13 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Test extends Model
 {
     use HasFactory;
-
-    protected $fillable = [
-        'category_id'
-    ];
-
+    
+    protected $fillable = ['name'];
+    
     public function testCategory(){
-        return $this->belongsTo(Category::class);
+        return $this->belongsToMany(Category::class);
     }
 
     public function testQuestion(){

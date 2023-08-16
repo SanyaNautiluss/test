@@ -17,6 +17,7 @@ class QuestionFactory extends Factory
     public function definition(): array
     {
         return [
+            'test_id'=>$this->faker->id,
             'question_text'=>$this->faker->text
         ];
     }
