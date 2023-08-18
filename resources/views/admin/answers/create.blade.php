@@ -6,7 +6,7 @@
     
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
-            <label for="question">{{ __('Question') }}</label>
+            <label for="question">@lang('pages.question')</label>
             <div class="form-group">
                 <select name="question_id" id="question" multiple>
                     @foreach($question as $id => $question)
@@ -15,10 +15,10 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="answer">{{ __('answer') }}</label>
+                <label for="answer">@lang('pages.answer')</label>
                 <input type="text" class="form-control" id="answer" placeholder="{{ __('answer') }}" name="answer" value="{{ old('answer') }}" />
             </div>
-            <label for="is_correct">{{ __('is_correct') }}</label>
+            <label for="is_correct">@lang('pages.correct')</label>
             <div class="form-group">
                 <select name="is_correct" multiple>
                     <option value="0">No</option>

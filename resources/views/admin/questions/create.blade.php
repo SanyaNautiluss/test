@@ -6,17 +6,17 @@
     
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-                <label for="question_text">{{ __('question text') }}</label>
-                <input type="text" class="form-control" id="question_text" placeholder="{{ __('question text') }}" name="question_text" value="{{ old('question_text') }}" />
-            </div>
-            <label for="test">{{ __('Test') }}</label>
+            <label for="test">@lang('pages.test')</label>
             <div class="form-group">
                 <select name="test_id" multiple>
                     @foreach($tests as $id => $test)
                         <option value="{{ $id }}">{{ $test }}</option>
                     @endforeach
                 </select>
+            </div>
+            <div class="form-group">
+                <label for="question_text">@lang('pages.question.text')</label>
+                <input type="text" class="form-control" id="question_text" placeholder="@lang('pages.question.text')" name="question_text" value="{{ old('question_text') }}" />
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">

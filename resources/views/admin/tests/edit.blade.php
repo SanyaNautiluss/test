@@ -8,14 +8,17 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Name:</strong>
+                <strong>@lang('pages.test')</strong>
                 <input type="text" name="name" class="form-control" placeholder="Name">
             </div>
-            <select name="categories" multiple>
-                @foreach($categories as $category)
-                    <option value="{{$category->id}}">{{$category->name}}</option>
-                @endforeach
-            </select>
+            <label for="test">@lang('pages.category')</label>
+            <div class="form-group">
+                <select name="categories" multiple>
+                    @foreach($categories as $category)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
+                </select>
+            </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
             <a class="btn btn-primary" href="{{ route('admin.tests.index') }}"> Back</a>

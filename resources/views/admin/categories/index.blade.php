@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="card-header py-3 d-flex">
                 <h1>
-                    {{ __('Categories') }}
+                    @lang('pages.categories')
                 </h1>
                 <div class="ml-auto">
                     <a class="btn btn-success" href="{{ route('admin.categories.create') }}">New Category</a>

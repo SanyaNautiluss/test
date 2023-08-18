@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="card-header py-3 d-flex">
                 <h1>
-                    {{ __('Questions') }}
+                @lang('pages.questions')
                 </h1>
                 <div class="ml-auto">
                     <a class="btn btn-success" href="{{ route('admin.questions.create') }}">New Question</a>
