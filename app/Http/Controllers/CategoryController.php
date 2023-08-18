@@ -3,60 +3,76 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Test;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class CategoryController extends Controller
 {
     public function index()
     {
 
-        $categories = Category::all();
+        $categories = Category::paginate();
         return view('admin.categories.index', compact('categories'));
     }
 
     public function create()
     {
-        return view('admin.categories.create');
+        $tests = Test::paginate();
+        return view('admin.categories.create', compact('tests'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required',
+            'tests' =>'required', 'array',
+            'tests.*' => [ 'number', Rule::exists('tests', 'id')]
         ]);
   
-        Category::create($request->all());
+        /** @var Category $category */
+        $category = Category::create($request->only(['name'])); // call to undefined method App\Models\Test::createOrFail()
+   
+        $category->tests()->sync($request->get('tests')); 
    
         return redirect()->route('admin.categories.index')
-                        ->with('success','User created successfully.');
+                        ->with('success','Category created successfully.');
     }
 
     public function show($id)
     {
-        $categories = Category::find($id);
-        return view('admin.categories.show',compact('categories'));
+        $category = Category::findOrFail($id);
+        return view('admin.categories.show',compact('category'));
     }
 
     public function edit($id)
     {
-        $categories = Category::find($id);
-        return view('admin.categories.edit', compact('categories', 'id'));
+        $category = Category::findOrFail($id);
+        $tests = Test::paginate();
+        return view('admin.categories.edit', compact('category', 'tests'));
     }
 
-    public function update($id)
+    public function update(Request $request, $id)
     {
-        $categories = Category::find($id);
-        $categories->name = request('name');
-        $categories->save(); 
+        $this->validate($request, [
+                'name' => 'required',
+                'tests' =>'required', 'array',
+                'tests.*' => [ 'number', Rule::exists('tests', 'id')]
+        ]);
+        $category = Category::findOrFail($id);
+        $category->update($request->only(['name']));
+
+        $category->tests()->sync($request->get('tests')); 
+
         return redirect()->route('admin.categories.index')
-                        ->with('success','User updated successfully');
+                        ->with('success','Category updated successfully');
     }
 
     public function destroy($id)
     {
-        Category::find($id)->delete();
+        Category::findOrFail($id)->delete();
   
         return redirect()->route('admin.categories.index')
-                        ->with('success','User deleted successfully');
+                        ->with('success','Category deleted successfully');
     }
 }

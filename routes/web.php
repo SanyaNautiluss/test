@@ -72,18 +72,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('answer/update/{id}', [\App\Http\Controllers\AnswerController::class, 'update'])->name('admin.answers.update');
     Route::delete('answer/destroy/{id}', [\App\Http\Controllers\AnswerController::class, 'destroy'])->name('admin.answers.destroy');
 
-    //results
-    Route::get('result', [\App\Http\Controllers\ResultController::class, 'index'])->name('admin.results.index');
-    Route::get('result/create', [\App\Http\Controllers\ResultController::class, 'create'])->name('admin.results.create');
-    Route::post('result/store', [\App\Http\Controllers\ResultController::class, 'store'])->name('admin.results.store');
-    Route::get('result/show/{id}', [\App\Http\Controllers\ResultController::class, 'show'])->name('admin.results.show');
-    Route::get('result/edit/{id}', [\App\Http\Controllers\ResultController::class, 'edit'])->name('admin.results.edit');
-    Route::patch('result/update/{id}', [\App\Http\Controllers\ResultController::class, 'update'])->name('admin.results.update');
-    Route::delete('result/destroy/{id}', [\App\Http\Controllers\ResultController::class, 'destroy'])->name('admin.results.destroy');
-
-
-
-
 
 
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');

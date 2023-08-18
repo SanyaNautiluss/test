@@ -12,14 +12,14 @@ class AnswerController extends Controller
     public function index()
     {
 
-        $answers = Answer::all();
+        $answers = Answer::paginate();
         return view('admin.answers.index', compact('answers'));
     }
 
     public function create()
     {
-        $questions = Question::all()->pluck('question_text', 'id');
-        return view('admin.answers.create', compact('questions'));
+        $question = Question::pluck('question_text','id');
+        return view('admin.answers.create', compact('question'));
     }
 
     public function store(Request $request)
@@ -30,34 +30,38 @@ class AnswerController extends Controller
             'is_correct' => 'required'
         ]);
   
-        Answer::create($request->all());
+        Answer::create($request->only('question_id', 'answer', 'is_correct'));
    
         return redirect()->route('admin.answers.index')
-                        ->with('success','User created successfully.');
+                        ->with('success','Answer created successfully.');
     }
 
     public function show($id)
     {
-        $answers = Answer::find($id);
-        return view('admin.answers.show',compact('answers'));
+        $answer = Answer::find($id);
+        return view('admin.answers.show',compact('answer'));
     }
 
     public function edit($id)
     {
-        $questions = Question::all()->pluck('question_text', 'id');
-        $answers = Answer::find($id);
-        return view('admin.answers.edit', compact('questions', 'answers', 'id'));
+        $answer = Answer::findOrFail($id);
+        $question = Question::pluck('question_text', 'id');
+        return view('admin.answers.edit', compact('question', 'answer'));
     }
 
-    public function update($id)
+    public function update(Request $request, $id)
     {
-        $answers = Answer::find($id);
-        $answers->question_id = request('question_id');
-        $answers->answer = request('answer');
-        $answers->is_correct = request('is_correct');
-        $answers->save(); 
+        $request->validate([
+            'question_id' => ['required', Rule::exists('questions', 'id')],
+            'answer' => 'required',
+            'is_correct' => 'required', 'boolean'
+        ]);
+        $answer = Answer::findOrFail($id);
+        $answer->update($request->only([ 'question_id', 'answer', 'is_correct']));
+    
+
         return redirect()->route('admin.answers.index')
-                        ->with('success','User updated successfully');
+                        ->with('success','Answer updated successfully');
     }
 
     public function destroy($id)
@@ -65,6 +69,6 @@ class AnswerController extends Controller
         Answer::find($id)->delete();
   
         return redirect()->route('admin.answers.index')
-                        ->with('success','User deleted successfully');
+                        ->with('success','Answer deleted successfully');
     }
 }

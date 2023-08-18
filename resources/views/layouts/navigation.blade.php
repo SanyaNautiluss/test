@@ -34,15 +34,6 @@
             </li>
 
             <li class="nav-item">
-                <a href="{{ route('admin.category_tests.index') }}" class="nav-link">
-                    <i class="nav-icon fas fa-microchip"></i>
-                    <p>
-                        {{ __('Category_tests') }}
-                    </p>
-                </a>
-            </li>
-
-            <li class="nav-item">
                 <a href="{{ route('admin.questions.index') }}" class="nav-link">
                     <i class="nav-icon fas fa-copy"></i>
                     <p>
@@ -59,16 +50,6 @@
                     </p>
                 </a>
             </li>
-
-            <li class="nav-item">
-                <a href="{{ route('admin.results.index') }}" class="nav-link">
-                    <i class="far fa-envelope"></i>
-                    <p>
-                        {{ __('Results') }}
-                    </p>
-                </a>
-            </li>
-
         </ul>
     </nav>
     <!-- /.sidebar-menu -->

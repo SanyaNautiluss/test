@@ -11,7 +11,7 @@ class Category extends Model
 
     protected $fillable = ['name'];
 
-    public function testCategory(){
+    public function tests(){
         return $this->belongsToMany(Test::class);
     }
 

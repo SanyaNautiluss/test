@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appi')
     
 @section('content')
     <!-- Content Header (Page header) -->
@@ -9,7 +9,7 @@
                     {{ __('Questions') }}
                 </h1>
                 <div class="ml-auto">
-                <a class="btn btn-success" href="{{ route('admin.questions.create') }}">New Question</a>
+                    <a class="btn btn-success" href="{{ route('admin.questions.create') }}">New Question</a>
                 </div>
             </div><!-- /.col -->
         </div><!-- /.container-fluid -->
@@ -21,7 +21,7 @@
     <table class="table table-bordered table-striped table-hover datatable datatable-category" cellspacing="0" width="100%">
         <thead>
             <tr>
-                <th>id</th>
+                <th>No</th>
                 <th>test_id</th>
                 <th>question_text</th>
                 <th>Action</th>
@@ -35,7 +35,7 @@
             <td>{{ $question->question_text }}</td>
             <td>
                 <form action="{{ route('admin.questions.destroy',$question->id) }}" method="POST">
-                <a class="btn btn-primary" href="{{ route('admin.questions.edit',$question->id) }}">Edit</a>
+                    <a class="btn btn-primary" href="{{ route('admin.questions.edit',$question->id) }}">Edit</a>
                     {{-- @csrf
                     @method('DELETE') --}} 
 

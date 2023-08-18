@@ -2,61 +2,77 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Test;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class TestController extends Controller
 {
     public function index()
     {
 
-        $tests = Test::all();
-        return view('admin.tests.index', ['tests' => $tests]);
+        $tests = Test::paginate();
+        return view('admin.tests.index', compact('tests'));
     }
 
     public function create()
     {
-        return view('admin.tests.create');
+        $categories = Category::paginate();
+        return view('admin.tests.create', compact('categories'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required',
+            'categories' =>'required', 'array',
+            'categories.*' => [ 'number', Rule::exists('categories', 'id')]
         ]);
   
-        Test::create($request->all());
+        /** @var Test $test */
+        $test = Test::create($request->only(['name'])); // call to undefined method App\Models\Test::createOrFail()
    
+        $test->categories()->sync($request->get('categories')); 
+
         return redirect()->route('admin.tests.index')
-                        ->with('success','User created successfully.');
+                        ->with('success','Test created successfully.');
     }
 
     public function show($id)
     {
-        $tests = Test::find($id);
-        return view('admin.tests.show',compact('tests'));
+        $test = Test::findOrFail($id);
+        return view('admin.tests.show',compact('test'));
     }
 
     public function edit($id)
     {
-        $tests = Test::find($id);
-        return view('admin.tests.edit', compact('tests', 'id'));
+        $test = Test::findOrFail($id);
+        $categories = Category::paginate();
+        return view('admin.tests.edit', compact('test', 'categories'));
     }
 
-    public function update($id)
+    public function update(Request $request, $id)
     {
-        $tests = Test::find($id);
-        $tests->name = request('name');
-        $tests->save(); 
+        $this->validate($request, [
+            'name' => 'required',
+            'categories' =>'required', 'array',
+            'categories.*' => [ 'number', Rule::exists('categories', 'id')]
+    ]);
+    $test = Test::findOrFail($id);
+    $test->update($request->only(['name']));
+    
+    $test->categories()->sync($request->get('categories')); 
+
         return redirect()->route('admin.tests.index')
-                        ->with('success','User updated successfully');
+                        ->with('success','Test updated successfully');
     }
 
     public function destroy($id)
     {
-        Test::find($id)->delete();
+        Test::findOrFail($id)->delete();
   
         return redirect()->route('admin.tests.index')
-                        ->with('success','User deleted successfully');
+                        ->with('success','Test deleted successfully');
     }
 }

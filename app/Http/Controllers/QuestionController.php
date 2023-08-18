@@ -11,13 +11,13 @@ class QuestionController extends Controller
     public function index()
     {
 
-        $questions = Question::all();
+        $questions = Question::paginate();
         return view('admin.questions.index', compact('questions'));
     }
 
     public function create()
     {
-        $tests=Test::all()->pluck('name', 'id');
+        $tests=Test::pluck('name','id');
         return view('admin.questions.create', compact('tests'));
     }
 
@@ -28,7 +28,8 @@ class QuestionController extends Controller
             'question_text' => 'required'
         ]);
   
-        Question::create($request->all());
+          /** @var Question $question */
+       Question::create($request->only(['test_id', 'question_text']));
    
         return redirect()->route('admin.questions.index')
                         ->with('success','User created successfully.');
@@ -36,23 +37,28 @@ class QuestionController extends Controller
 
     public function show($id)
     {
-        $questions = Question::find($id);
-        return view('admin.questions.show',compact('questions'));
+        $question = Question::findOrFail($id);
+        return view('admin.questions.show',compact('question'));
     }
 
     public function edit($id)
     {
-        $tests=Test::all()->pluck('name', 'id');
-        $questions = Question::find($id);
-        return view('admin.questions.edit', compact('tests', 'questions', 'id'));
+        $question = Question::findOrFail($id);
+        $tests = Test::pluck('name', 'id');
+        return view('admin.questions.edit', compact('question', 'tests'));
     }
 
-    public function update($id)
+    public function update(Request $request, $id)
     {
-        $questions = Question::find($id);
-        $questions->test_id = request('test_id');
-        $questions->question_text = request('question_text');
-        $questions->save(); 
+        $this->validate($request, [
+            'test_id' => ['required', Rule::exists('tests', 'id')],
+            'question_text' => 'required'
+    ]);
+    $question = Question::findOrFail($id);
+    $question->update($request->only([ 'test_id', 'question_text']));
+
+
+
         return redirect()->route('admin.questions.index')
                         ->with('success','User updated successfully');
     }

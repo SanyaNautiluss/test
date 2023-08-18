@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appi')
     
 @section('content')
     <!-- Content Header (Page header) -->
@@ -9,7 +9,7 @@
                     {{ __('Categories') }}
                 </h1>
                 <div class="ml-auto">
-                <a class="btn btn-success" href="{{ route('admin.categories.create') }}">New Category</a>
+                    <a class="btn btn-success" href="{{ route('admin.categories.create') }}">New Category</a>
                 </div>
             </div><!-- /.col -->
         </div><!-- /.container-fluid -->
@@ -21,7 +21,7 @@
     <table class="table table-bordered table-striped table-hover datatable datatable-category" cellspacing="0" width="100%">
         <thead>
             <tr>
-                <th>id</th>
+                <th>No</th>
                 <th>Name</th>
                 <th>Action</th>
             </tr>
@@ -33,7 +33,7 @@
             <td>{{ $category->name }}</td>
             <td>
                 <form action="{{ route('admin.categories.destroy',$category->id) }}" method="POST">
-                <a class="btn btn-primary" href="{{ route('admin.categories.edit',$category->id) }}">Edit</a>
+                    <a class="btn btn-primary" href="{{ route('admin.categories.edit',$category->id) }}">Edit</a>
                     {{-- @csrf
                     @method('DELETE') --}} 
 

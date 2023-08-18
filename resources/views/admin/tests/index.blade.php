@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appi')
     
 @section('content')
     <!-- Content Header (Page header) -->
@@ -9,7 +9,7 @@
                     {{ __('Tests') }}
                 </h1>
                 <div class="ml-auto">
-                <a class="btn btn-success" href="{{ route('admin.tests.create') }}">New Test</a>
+                    <a class="btn btn-success" href="{{ route('admin.tests.create') }}">New Test</a>
                 </div>
             </div><!-- /.col -->
         </div><!-- /.container-fluid -->
@@ -21,7 +21,7 @@
     <table class="table table-bordered table-striped table-hover datatable datatable-category" cellspacing="0" width="100%">
         <thead>
             <tr>
-                <th>id</th>
+                <th>No</th>
                 <th>Name</th>
                 <th>Action</th>
             </tr>

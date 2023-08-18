@@ -11,11 +11,11 @@ class Test extends Model
     
     protected $fillable = ['name'];
     
-    public function testCategory(){
+    public function categories(){
         return $this->belongsToMany(Category::class);
     }
 
-    public function testQuestion(){
+    public function questions(){
         return $this->hasMany(Question::class);
     }
 }
