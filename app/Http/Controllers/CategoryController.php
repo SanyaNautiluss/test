@@ -26,8 +26,8 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'tests' =>'required', 'array',
-            'tests.*' => [ 'number', Rule::exists('tests', 'id')]
+            'tests' =>'array',
+            'tests.*' => [ 'numeric', Rule::exists('tests', 'id')]
         ]);
   
         /** @var Category $category */

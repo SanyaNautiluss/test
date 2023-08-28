@@ -26,8 +26,8 @@ class TestController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'categories' =>'required', 'array',
-            'categories.*' => [ 'number', Rule::exists('categories', 'id')]
+            'categories' =>'array',
+            'categories.*' => [ 'numeric', Rule::exists('categories', 'id')]
         ]);
   
         /** @var Test $test */

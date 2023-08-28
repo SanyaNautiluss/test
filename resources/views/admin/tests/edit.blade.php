@@ -13,7 +13,7 @@
             </div>
             <label for="test">@lang('pages.category')</label>
             <div class="form-group">
-                <select name="categories" multiple>
+                <select name="categories[]" multiple>
                     @foreach($categories as $category)
                         <option value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
