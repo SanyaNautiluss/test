@@ -8,6 +8,6 @@
     <body>
         @viteReactRefresh
     <div id="root"></div>
-    @vite('resources/js/main.jsx')
+        @vite('resources/js/main.jsx')
     </body>
 </html>

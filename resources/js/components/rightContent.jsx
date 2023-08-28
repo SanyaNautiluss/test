@@ -6,7 +6,7 @@ const RightAd = () => {
   return (
     <div       
     className="fixed-right"
-    style={{ height:'100px', marginLeft: '70rem', background: '#f8f9fa' }}
+    style={{ height:'50px', marginLeft: '70rem', background: '#f8f9fa' }}
   >
       <aside className="col-md-3 mb-5 col-lg-2 bg-light sidebar">
         <div className="position-sticky">

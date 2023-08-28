@@ -1,17 +1,22 @@
 import React from 'react';
 
+
+
+
+
 const Sidebar = () => {
   return (
     <div       
-    style={{ marginLeft: '-22rem', marginTop: '5rem' }}
+    style={{ height:'50px', marginLeft: '-17rem', marginTop: '5rem' }}
   >
       {/* Sidebar */}
-      <nav  id="sidebar" className="col-md-3 col-lg-2 sidebar">
-        <div className="position-fixed">
-          <h2 className="mb-0" style={{color:'black', backgroundColor: '#E7E7E7'}}>
+      <nav  id="sidebar" className="col-lg-2 sidebar">
+      
+        <div className="position-fixed " >
+          <ul className="nav flex-column ">
+          <h3 className="mb-0 " style={{color:'black', backgroundColor: '#E7E7E7'}}>
             W3Schools Quizzes
-          </h2>
-          <ul className="nav flex-column">
+          </h3>
             <li className="nav-item">
               <a className="nav-link" href="#" style={{color:'black', backgroundColor: '#E7E7E7'}}>
                 Home

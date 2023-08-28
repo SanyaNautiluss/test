@@ -3,7 +3,7 @@ import viteLogo from '../assets/vite.svg';
 const Footer = () => {
   return (
     <footer >
-      <div className="container" align='center'  >
+      <div className="container pt-4" align='center'  >
 
         <button type="button" className="btn btn-dark mx-2">Spaces</button>
         <button type="button" className="btn btn-dark mx-2">Upgrade</button>
@@ -11,7 +11,7 @@ const Footer = () => {
         <button type="button" className="btn btn-dark mx-2">Get Certified</button>
         <button type="button" className="btn btn-dark mx-2">Report Error</button>              
          
-        <div className="container" >
+        <div className="container pt-4" >
           <div className="row">
             <div className="col-sm">
               <h4 >Top Tutorials</h4>
