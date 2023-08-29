@@ -5,8 +5,9 @@ import RightAd from './components/rightContent.jsx'
 import Types from './components/Typography.jsx'
 import Footer from './components/Footer.jsx'
 import BoxComponent from './components/Container.jsx'
+import Kickstart from './components/Kickstart.jsx'
 
-import './App.css'
+import '../css/App.css'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -18,7 +19,8 @@ function App() {
         <RightAd/>
           <Types/>
             <BoxComponent/>
-              <Footer/>
+              <Kickstart/>
+                <Footer/>
     </>
   )
 }

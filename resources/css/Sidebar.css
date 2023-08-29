@@ -1,0 +1,9 @@
+#Sidebar {
+    color:'black';
+    background-color: #E7E9EB;
+  }
+ 
+  #Sidebar :hover
+ {
+    background-color: #c1c0c0 !important;
+  }

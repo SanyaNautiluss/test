@@ -6,7 +6,7 @@ const RightAd = () => {
   return (
     <div       
     className="fixed-right"
-    style={{ height:'50px', marginLeft: '70rem', background: '#f8f9fa' }}
+    style={{ height:'70px', marginLeft: '75rem', marginTop: '120px', background: '#f8f9fa' }}
   >
       <aside className="col-md-3 mb-5 col-lg-2 bg-light sidebar">
         <div className="position-sticky">
@@ -15,7 +15,7 @@ const RightAd = () => {
         </div>
       </aside>
       <aside className="col-md-3 mb-5 col-lg-2  sidebar">
-        <div className="position-sticky">
+        <div style={{width:'150px', marginLeft:'80px'}}>
           <a href="">COLOR PICKER</a>
         <img src={colorpicker} />
         

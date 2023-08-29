@@ -1,117 +1,130 @@
 import React from 'react';
 import viteLogo from '../assets/vite.svg';
-const Footer = () => {
-  return (
-    <footer >
-      <div className="container pt-4" align='center'  >
+import '../../css/Footer.css';
 
-        <button type="button" className="btn btn-dark mx-2">Spaces</button>
-        <button type="button" className="btn btn-dark mx-2">Upgrade</button>
-        <button type="button" className="btn btn-dark mx-2">Newsletter</button>
-        <button type="button" className="btn btn-dark mx-2">Get Certified</button>
-        <button type="button" className="btn btn-dark mx-2">Report Error</button>              
-         
-        <div className="container pt-4" >
-          <div className="row">
+const Footer = () => {
+  const button ={
+    width:'300px',
+  };
+  return (
+    <footer style={{width:'1600px', marginLeft:'-100px'}}>
+      <div>
+          <div id='Footer'>
+            <button style={button} className="btn btn-dark mx-2">Spaces</button>
+            <button style={button} className="btn btn-dark mx-2">Upgrade</button>
+            <button style={button} className="btn btn-dark mx-2">Newsletter</button>
+            <button style={button} className="btn btn-dark mx-2">Get Certified</button>
+            <button style={button} className="btn btn-dark mx-2">Report Error</button>              
+          </div>
+        <div className=" pt-4" >
+          <div className="row" style={{marginTop:'40px', marginBottom:'40px',}}>
             <div className="col-sm">
               <h4 >Top Tutorials</h4>
-              <a href='#!' className='text-dark'>
-                Link 1
-              </a>
-              <br/>
-              <a href='#!' className='text-dark'>
-                Link 2
-              </a>
-              <br/>
-              <a href='#!' className='text-dark'>
-                Link 3
-              </a>
-              <br/>
-              <a href='#!' className='text-dark'>
-                Link 4
-              </a>
+              <div id='link'>
+                <a href='#!' className='text-dark' id='link'>
+                  Link 1
+                </a>
+                <br/>
+                <a href='#!' className='text-dark' id='link'>
+                  Link 2
+                </a>
+                <br/>
+                <a href='#!' className='text-dark' id='link'>
+                  Link 3
+                </a>
+                <br/>
+                <a href='#!' className='text-dark' id='link'>
+                  Link 4
+                </a>
+              </div>
             </div>
 
             <div className="col-sm">
               <h4 >Top References</h4>
-              <a href='#!' className='text-dark'>
-                Link 1
-              </a>
-              <br/>
-              <a href='#!' className='text-dark'>
-                Link 2
-              </a>
-              <br/>
-              <a href='#!' className='text-dark'>
-                Link 3
-              </a>
-              <br/>
-              <a href='#!' className='text-dark'>
-                Link 4
-              </a>
+              <div id='link'>
+                <a href='#!' className='text-dark' id='link'>
+                  Link 1
+                </a>
+                <br/>
+                <a href='#!' className='text-dark' id='link'>
+                  Link 2
+                </a>
+                <br/>
+                <a href='#!' className='text-dark' id='link'>
+                  Link 3
+                </a>
+                <br/>
+                <a href='#!' className='text-dark' id='link'>
+                  Link 4
+                </a>
+              </div>
             </div>
                   
             <div className="col-sm">
               <h4 >Top Examples</h4>
-              <a href='#!' className='text-dark'>
-                Link 1
-              </a>
-              <br/>
-              <a href='#!' className='text-dark'>
-                Link 2
-              </a>
-              <br/>
-              <a href='#!' className='text-dark'>
-                Link 3
-              </a>
-              <br/>
-              <a href='#!' className='text-dark'>
-                Link 4
-              </a>
+              <div id='link'>
+                <a href='#!' className='text-dark' id='link'>
+                  Link 1
+                </a>
+                <br/>
+                <a href='#!' className='text-dark' id='link'>
+                  Link 2
+                </a>
+                <br/>
+                <a href='#!' className='text-dark' id='link'>
+                  Link 3
+                </a>
+                <br/>
+                <a href='#!' className='text-dark' id='link'>
+                  Link 4
+                </a>
+              </div>
             </div>
 
             <div className="col-sm">
               <h4 >Get Certified</h4>
-              <a href='#!' className='text-dark'>
-                Link 1
-              </a>
-              <br/>
-              <a href='#!' className='text-dark'>
-                Link 2
-              </a>
-              <br/>
-              <a href='#!' className='text-dark'>
-                Link 3
-              </a>
-              <br/>
-              <a href='#!' className='text-dark'>
-                Link 4
-              </a>
+              <div id='link'>
+                <a href='#!' className='text-dark' id='link'>
+                  Link 1
+                </a>
+                <br/>
+                <a href='#!' className='text-dark' id='link'>
+                  Link 2
+                </a>
+                <br/>
+                <a href='#!' className='text-dark' id='link'>
+                  Link 3
+                </a>
+                <br/>
+                <a href='#!' className='text-dark' id='link'>
+                  Link 4
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </div>
         
-        <section className='mb-4' >
-          <div align="right" >
-          <a href='#!' className='text-dark'>
-            Forum
+        <section className='mb-2' >
+          <div align="right" id='link' >
+          <a href='#!' className='text-dark mr-1'>
+            FORUM
           </a>
           |
-          <a href='#!' className='text-dark'>
-            About
+          <a href='#!' className='text-dark ml-1'>
+            ABOUT
           </a>
           </div>
-            <p>
+            <p className='mt-2'>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum repellat quaerat
               voluptatibus placeat nam, commodi optio pariatur est quia magnam eum harum corrupti dicta, aliquam
               sequi voluptate quas.
             </p>
         </section>
 
-        <div className='text-center p-3' >
-            © 2020 Copyright:
-          <a className='text-dark' href='https://mdbootstrap.com/'>
+        <div id='link' className='text-center p-3' >
+            <a className='text-dark' href="">© 2020 Copyright:</a>
+          <a className='text-dark' id='link' href='https://mdbootstrap.com/'>
             MDBootstrap.com
           </a>
         </div>

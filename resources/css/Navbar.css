@@ -1,0 +1,20 @@
+#Navbar {
+    border-radius: 30px;
+    color:black;
+    background-color: #D9EEE1;
+  }
+  
+  #Navbar :hover {
+    border-radius: 30px;
+    color:white;
+    background-color: #04AA6D !important;
+  }
+
+  #button :hover {
+    border-radius: 30px;
+    background-color: #e3e6e4 !important;
+  }
+  #Dropdown :hover {
+    color:white;
+    background-color: #04AA6D !important;
+  }
