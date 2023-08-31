@@ -18,3 +18,27 @@
     color:white;
     background-color: #04AA6D !important;
   }
+
+  .arrow {
+    height: 15px;
+    width: 15px;
+    border: solid rgb(255, 255, 255);
+    border-width: 0 3px 3px 0;
+    display:inline-block;
+
+
+  }
+  
+  .right {
+   
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+  }
+  
+  .left {
+
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+  }
+
+  
