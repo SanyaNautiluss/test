@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+//Frontend Controller
+Route::get('/', [\App\Http\Controllers\QuizController::class, 'index'])->name('welcome');
 
 Auth::routes();
 
@@ -72,9 +74,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('answer/update/{id}', [\App\Http\Controllers\AnswerController::class, 'update'])->name('admin.answers.update');
     Route::delete('answer/destroy/{id}', [\App\Http\Controllers\AnswerController::class, 'destroy'])->name('admin.answers.destroy');
 
-    //Frontend Controller
-    Route::get('/getcategories',[QuizController::class, 'getcategories']);
-    Route::get('/showcategory/{id}',[QuizController::class, 'showcategory']);
+   
 
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');

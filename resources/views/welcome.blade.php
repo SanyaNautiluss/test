@@ -4,10 +4,13 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Laravel</title>
+        @viteReactRefresh
+        @vite('resources/js/main.jsx')
     </head>
     <body>
-        @viteReactRefresh
-    <div id="root"></div>
-        @vite('resources/js/main.jsx')
+        <div id="root"></div>
     </body>
+    <script>
+        window.categories = @json($categories)
+    </script>
 </html>

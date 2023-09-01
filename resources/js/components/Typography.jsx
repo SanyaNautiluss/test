@@ -1,7 +1,9 @@
 import React from 'react';
+
 export default function Types() {
-    return (
-        <blockquote className="blockquote text-left" style={{marginLeft:'-70px',}}>
+
+  return (
+      <blockquote className="blockquote text-left" style={{marginLeft:'-70px',}}>
         <p className="h1 mb-4">
           W3Schools Quizzes
         </p>
@@ -17,7 +19,6 @@ export default function Types() {
         <p className="mb-4">
           When you finish the quiz, you can go through each question with the correct answer.
         </p>
-      </blockquote>
-      
-    );
-  }
+    </blockquote>
+  );
+}

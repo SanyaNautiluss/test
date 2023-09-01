@@ -11,11 +11,10 @@ use App\Models\Question;
 
 class QuizController extends Controller
 {
-    public function getcategories(){
-        $categories=Category::paginate();
-        return response()->json([
-            'categories'=>$categories
-        ],200);
+    public function index()
+    {
+        $categories = Category::paginate();
+        return view('welcome', compact('categories'));
     }
 
     public function showcategory($id){
