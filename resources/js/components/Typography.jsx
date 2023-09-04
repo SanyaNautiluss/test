@@ -3,7 +3,7 @@ import React from 'react';
 export default function Types() {
 
   return (
-      <blockquote className="blockquote text-left" style={{marginLeft:'-70px',}}>
+      <blockquote className="blockquote text-left" style={{marginLeft:'300px',}}>
         <p className="h1 mb-4">
           W3Schools Quizzes
         </p>

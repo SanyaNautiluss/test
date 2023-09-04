@@ -11,18 +11,18 @@ use App\Models\Question;
 
 class QuizController extends Controller
 {
-    public function index()
+    public function indexWelcome()
     {
         $categories = Category::paginate();
         return view('welcome', compact('categories'));
     }
-
-    public function showcategory($id){
-        $category=Category::findOrFail($id);
-        return response()->json([
-            'category'=>$category
-        ],200);
+    public function indexQuiz()
+    {
+        $categories = Category::paginate();
+        return view('quiz', compact('categories'));
     }
+
+
 
 }
 

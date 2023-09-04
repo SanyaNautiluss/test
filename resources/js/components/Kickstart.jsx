@@ -4,7 +4,7 @@ import '../../css/Kickstart.css';
 const Kickstart = () => {
     
     return (
-        <div style={{width:'1250px', height:'400px', textAlign:'left', paddingTop:'10px', marginLeft:'-70px', marginTop:'50px', marginBottom:'200px',}} id="getdiploma">
+        <div style={{width:'1250px', height:'400px', textAlign:'left', paddingTop:'10px', marginLeft:'300px', marginTop:'50px', marginBottom:'200px',}} id="getdiploma">
             <h2>Kickstart your career</h2>
             <p>Get certified by completing <span id="hey">a</span> <span id="coursetopic"></span> course</p>
             <a style={{color:'white'}} id="cert_firstpage" href="https://campus.w3schools.com/collections/course-catalog?utm_source=classic&amp;utm_medium=tutorials&amp;utm_campaign=first-page-ad" target="_blank">Get certified</a>

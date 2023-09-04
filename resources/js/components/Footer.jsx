@@ -9,7 +9,7 @@ const Footer = () => {
   const categories = useMemo(()=>window.categories.data, [window.categories]);
 
   return (
-    <footer style={{width:'1600px', marginLeft:'-100px'}}>
+    <footer style={{width:'1600px', marginLeft:'300px'}}>
       <div>
         <div id='Footer'>
           <button style={button} className="btn btn-dark mx-2">Spaces</button>
@@ -92,7 +92,7 @@ const Footer = () => {
         </a>
       </div>
 
-      <div>
+      <div className='text-center'>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>

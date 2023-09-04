@@ -1,13 +1,13 @@
-import React from 'react'
+import React from 'react';
 import ReactDOM from 'react-dom/client'
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import App from './App.jsx'
+import Welcome from './layouts/Welcome.jsx';
 import './index.css'
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+ReactDOM.createRoot(document.getElementById('welcome')).render(
+  <Welcome>
       {console.log(window.categories)}
-    <App />
-  </React.StrictMode>,
+  </Welcome>,
 )
+

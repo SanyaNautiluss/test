@@ -4,18 +4,19 @@ const BoxComponent = () => {
     const boxStyle = {
         width: 600,
         height: 280,
+        textAlign:'center',
       };
       const button = {
         width: '200px',
         fontSize: '19px',
         borderRadius: '20px',
         paddingTop: '7px',
-        paddingBottom: '7px'
+        paddingBottom: '7px',
       };
       const categories = useMemo(()=>window.categories.data, [window.categories]);
 
     return (
-        <div style={{width:'1300px', marginLeft:'-70px'}}>     
+        <div style={{width:'1300px', marginLeft:'300px'}}>     
             <div className="d-flex flex-wrap" >
                 {categories.map((category, index) => (
                     <div key={index} className="box bg-primary mr-5 mb-5 p-5" style={boxStyle}>

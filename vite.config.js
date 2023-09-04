@@ -6,6 +6,7 @@ import path from 'path';
 export default defineConfig({
     plugins: [
         laravel(['resources/js/main.jsx']),
+        laravel(['resources/js/quiz.jsx']),
         react(),
     ],
     resolve: {
