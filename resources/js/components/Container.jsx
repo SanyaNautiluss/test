@@ -13,7 +13,7 @@ const BoxComponent = () => {
         paddingTop: '7px',
         paddingBottom: '7px',
       };
-      const categories = useMemo(()=>window.categories.data, [window.categories]);
+      const categories = useMemo(()=>window.categories, [window.categories]);
 
     return (
         <div style={{width:'1300px', marginLeft:'300px'}}>     
@@ -24,7 +24,7 @@ const BoxComponent = () => {
                         <p className="mb-4 p-4">
                             25 Questions covering the basics of {category.name}
                         </p>
-                        <a href={category.name}>
+                        <a href={category.id}>
                             <button className="btn btn-success" style={button}>
                                 Start Quiz
                             </button>

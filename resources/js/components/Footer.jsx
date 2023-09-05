@@ -6,7 +6,7 @@ const Footer = () => {
   const button ={
     width:'300px',
   };
-  const categories = useMemo(()=>window.categories.data, [window.categories]);
+  const categories = useMemo(()=>window.categories, [window.categories]);
 
   return (
     <footer style={{width:'1600px', marginLeft:'300px'}}>
@@ -25,7 +25,7 @@ const Footer = () => {
               <h4 >Top Tutorials</h4>
               {categories.map((category, index) => (
                 <div id='link'>
-                   <a key={index} href={category.name} className='text-dark' id='link'>
+                   <a key={index} href={category.id} className='text-dark' id='link'>
                     {category.name} Tutorial
                    </a>
                 </div> 
@@ -36,7 +36,7 @@ const Footer = () => {
               <h4 >Top References</h4>
               {categories.map((category, index) => (
                 <div id='link'>
-                   <a key={index} href={category.name} className='text-dark' id='link'>
+                   <a key={index} href={category.id} className='text-dark' id='link'>
                     {category.name} Reference
                    </a>
                 </div> 
@@ -47,7 +47,7 @@ const Footer = () => {
               <h4 >Top Examples</h4>
               {categories.map((category, index) => (
                 <div id='link'>
-                   <a key={index} href={category.name} className='text-dark' id='link'>
+                   <a key={index} href={category.id} className='text-dark' id='link'>
                     {category.name} Examples
                    </a>
                 </div> 
@@ -58,7 +58,7 @@ const Footer = () => {
               <h4 >Get Certified</h4>
               {categories.map((category, index) => (
                 <div id='link'>
-                  <a key={index} href={category.name} className='text-dark' id='link'>
+                  <a key={index} href={category.id} className='text-dark' id='link'>
                     {category.name} Certificate
                   </a>
                 </div> 

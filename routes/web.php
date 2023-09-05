@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 //Frontend Controller
 Route::get('/', [\App\Http\Controllers\QuizController::class, 'indexWelcome'])->name('welcome');
-Route::get('/{id}', [\App\Http\Controllers\QuizController::class, 'indexQuiz'])->name('quiz');
+Route::get('/{category}', [\App\Http\Controllers\QuizController::class, 'indexQuiz'])->name('quiz');
 
 Auth::routes();
 

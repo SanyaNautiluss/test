@@ -5,8 +5,8 @@ const Sidebar = () => {
  const Quiz ={
   color:'black'
  };
- const categories = useMemo(()=>window.categories.data, [window.categories]);
-  
+ const categories = useMemo(()=>window.categories, [window.categories]);
+
   return (
     <div       
     style={{ position:'fixed', height:'50px', marginLeft: '-1rem', marginTop: '100px', zIndex:'2' }}
@@ -19,7 +19,7 @@ const Sidebar = () => {
             <a className="nav-link" href="/" style={Quiz}>Quiz HOME</a>
             {categories.map((category, index) => (
               <li key={index} className="nav-item" >
-                <a className="nav-link" href={category.name} style={Quiz} >
+                <a className="nav-link" href={`/${category.id}`} style={Quiz} >
                   Quiz {category.name}
                 </a>
               </li>

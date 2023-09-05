@@ -9,6 +9,9 @@
     </head>
     <body>
     @yield('content')
+    <script>
+        window.categories = @json($categories)
+    </script>
     </body>
     @yield('scripts')
 </html>

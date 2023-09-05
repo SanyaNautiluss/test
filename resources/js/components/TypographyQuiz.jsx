@@ -1,18 +1,20 @@
 import React, {useMemo} from 'react';
 
 
+
+
 export default function TypesQuiz() {
-  const categories = useMemo(()=>window.categories.data, [window.categories]);
+  const category = useMemo(()=>window.category, [window.category]);
 
 
        
   return (
+    <div>
         <blockquote className="blockquote text-left" style={{marginLeft:'300px',}}>
-               {categories.map((category, index) => (
-              <li key={index} className="nav-item" >
-                  Quiz {category.name}
-              </li>  
-              ))} 
+
+        <p className="h1 mb-4">
+        {category.name}  Quiz 
+        </p>
 
         <p className="mb-4">
           Question {} of {};
@@ -21,6 +23,7 @@ export default function TypesQuiz() {
           The Quiz
         </p>
     </blockquote>
+    </div>
   );
 }
 

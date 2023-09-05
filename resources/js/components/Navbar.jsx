@@ -1,4 +1,4 @@
-import React, {useMemo, useEffect, useRef, useState} from 'react';
+import React, {useMemo, useRef, useState} from 'react';
 import reactLogo from '../assets/react.svg';
 import miniLogo from '../assets/mini.svg';
 import mini2Logo from '../assets/minireact.svg';
@@ -9,7 +9,7 @@ const Navbar = () => {
   const divstyle = {
     scrollBehavior: 'smooth',
     display:'flex',
-    width:'1930px',
+    width:'1910px',
     textAlign:'start',
     height: '40px',
     marginLeft: '-3rem',
@@ -24,47 +24,12 @@ const Navbar = () => {
    const Testitems = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6', 'Item 7', 'Item 8', 'Item 9', 'Item 10', 'Item 11', 'Item 12', 'Item 13', 'Item 14', 'Item 15', 'Item 16', 'Item 17', 'Item 18', 'Item 19', 'Item 20', 'Item 21', 'Item 22'];
 
   const scrl = useRef(null);
-  const categories = useMemo(()=>window.categories.data, [window.categories]);
+  const categories = useMemo(()=>window.categories, [window.categories]);
   const [scrollX, setscrollX] = useState(0); // For detecting start scroll postion
-  const [scrolEnd, setscrolEnd] = useState(false); // For detecting end of scrolling
   const slide = (shift) => {
     scrl.current.scrollLeft += shift;
     setscrollX(scrollX + shift); // Updates the latest scrolled postion
-
-    if (
-        Math.floor(scrl.current.scrollWidth - scrl.current.scrollLeft) <=
-        scrl.current.offsetWidth
-      ) {
-        setscrolEnd(true);
-      } else {
-        setscrolEnd(false);
-      }
     };
-    const scrollCheck = () => {
-        setscrollX(scrl.current.scrollLeft);
-        if (
-          Math.floor(scrl.current.scrollWidth - scrl.current.scrollLeft) <=
-          scrl.current.offsetWidth
-        ) {
-          setscrolEnd(true);
-        } else {
-          setscrolEnd(false);
-        }
-      };
-      useEffect(() => {
-        if (
-          scrl.current &&
-          scrl?.current?.scrollWidth === scrl?.current?.offsetWidth
-        ) {
-          setscrolEnd(true);
-        } else {
-          setscrolEnd(false);
-        }
-        return () => {};
-      }, [scrl?.current?.scrollWidth, scrl?.current?.offsetWidth]);
-
-
-
 
   return (
     <div>
@@ -132,21 +97,21 @@ const Navbar = () => {
         
         <div style={white}>
           {scrollX !== 0 && (
-            <button className="btn-dark" style={{ height:'40px',  zIndex: 5}} onClick={() => slide(-200)}>
+            <button className="btn-dark" style={{ height:'40px',  zIndex: 5}} onClick={() => slide(-250)}>
               <div className='arrow left'></div>
             </button>
           )}
-          <ul ref={scrl} onScroll={scrollCheck} className="btn-dark" style={divstyle} >
+          <ul ref={scrl} className="btn-dark" style={divstyle} >
               {Testitems.map((category, index) => (
                 <li key={index} className="btn btn-dark" style={{marginTop:'-5px'}} >
-                  <a className="nav-link text-nowrap" style={white}>
+                  <a className="nav-link text-nowrap" href={category.id} style={white}>
                     {category}
                   </a>
                 </li>
               ))}     
           </ul>
-          {!scrolEnd && (
-            <button className="btn-dark" style={{ height:'40px', marginLeft:'-2rem',}} onClick={() => slide(+200)}>
+          {scrollX !== 1 && (
+            <button className="btn-dark" style={{ height:'40px', marginLeft:'-10px',  zIndex: 5}} onClick={() => slide(+250)}>
               <div className='arrow right'></div>
             </button>
           )}

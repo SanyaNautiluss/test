@@ -13,13 +13,15 @@ class QuizController extends Controller
 {
     public function indexWelcome()
     {
-        $categories = Category::paginate();
+        $categories = Category::all();
         return view('welcome', compact('categories'));
     }
-    public function indexQuiz()
+    public function indexQuiz(Category $category)
     {
-        $categories = Category::paginate();
-        return view('quiz', compact('categories'));
+        
+        // $category = Category::whereId($id)->first();
+        
+        return view('quiz', compact('category'));
     }
 
 
