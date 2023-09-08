@@ -102,10 +102,10 @@ const Navbar = () => {
             </button>
           )}
           <ul ref={scrl} className="btn-dark" style={divstyle} >
-              {Testitems.map((category, index) => (
+              {categories.map((category, index) => (
                 <li key={index} className="btn btn-dark" style={{marginTop:'-5px'}} >
                   <a className="nav-link text-nowrap" href={category.id} style={white}>
-                    {category}
+                    {category.name}
                   </a>
                 </li>
               ))}     

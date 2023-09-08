@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import Types from '../components/Typography.jsx';
-import BoxComponent from '../components/Container.jsx';
+import Typography from '../components/Typography.jsx';
+import Container from '../components/Container.jsx';
 import MainLayout from './MainLayout';
 import '../../css/App.css';
 
@@ -10,8 +10,8 @@ function Welcome() {
   return (
     <>
     <MainLayout>
-      <Types/>
-        <BoxComponent/>
+      <Typography/>
+        <Container/>
     </MainLayout>
     </>
   )

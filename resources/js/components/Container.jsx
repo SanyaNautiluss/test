@@ -1,6 +1,6 @@
 import React, {useMemo} from 'react';
 
-const BoxComponent = () => {
+const Container = () => {
     const boxStyle = {
         width: 600,
         height: 280,
@@ -22,11 +22,11 @@ const BoxComponent = () => {
                     <div key={index} className="box bg-primary mr-5 mb-5 p-5" style={boxStyle}>
                         <h1>{category.name}</h1>
                         <p className="mb-4 p-4">
-                            25 Questions covering the basics of {category.name}
+                           Tests covering the basics of {category.name}
                         </p>
                         <a href={category.id}>
                             <button className="btn btn-success" style={button}>
-                                Start Quiz
+                                Select test
                             </button>
                         </a>
                     </div>
@@ -36,4 +36,4 @@ const BoxComponent = () => {
     );
 };
 
-export default BoxComponent;
+export default Container;

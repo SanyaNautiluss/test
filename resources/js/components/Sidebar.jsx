@@ -16,11 +16,11 @@ const Sidebar = () => {
         <div style={{height: '100%', width: '250px', backgroundColor: '#E7E9EB', overflowY: 'scroll', paddingTop: '20px'}} >
           <h4 className="mb-0"  >W3Schools Quizzes</h4>
           <ul id='Sidebar' className="nav flex-column" >
-            <a className="nav-link" href="/" style={Quiz}>Quiz HOME</a>
+            <a className="nav-link" href="/" style={Quiz}>Categories</a>
             {categories.map((category, index) => (
               <li key={index} className="nav-item" >
                 <a className="nav-link" href={`/${category.id}`} style={Quiz} >
-                  Quiz {category.name}
+                  {category.name}
                 </a>
               </li>
             ))}     

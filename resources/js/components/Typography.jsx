@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Types() {
+export default function Typography() {
 
   return (
       <blockquote className="blockquote text-left" style={{marginLeft:'300px',}}>
@@ -11,13 +11,13 @@ export default function Types() {
           Test your skills with W3Schools' Quizzes.
         </p>
         <p className="h2 mb-4">
-          The Quiz
+          The Categories
         </p>
         <p className="mb-4">
-          Each quiz contains 25-40 questions, you get 1 point for each correct answer, at the end of each quiz you get your total score.
+          Each category contains many tests, which have questions, you can select category and test to pass.
         </p>
         <p className="mb-4">
-          When you finish the quiz, you can go through each question with the correct answer.
+          When you finish the test, you can go through each question with the correct answer.
         </p>
     </blockquote>
   );
