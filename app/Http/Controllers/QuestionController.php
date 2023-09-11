@@ -32,13 +32,7 @@ class QuestionController extends Controller
        Question::create($request->only(['test_id', 'question_text']));
    
         return redirect()->route('admin.questions.index')
-                        ->with('success','User created successfully.');
-    }
-
-    public function show($id)
-    {
-        $question = Question::findOrFail($id);
-        return view('admin.questions.show',compact('question'));
+                        ->with('success','Question created successfully.');
     }
 
     public function edit($id)
@@ -60,7 +54,7 @@ class QuestionController extends Controller
 
 
         return redirect()->route('admin.questions.index')
-                        ->with('success','User updated successfully');
+                        ->with('success','Question updated successfully');
     }
 
     public function destroy($id)
@@ -68,6 +62,6 @@ class QuestionController extends Controller
         Question::find($id)->delete();
   
         return redirect()->route('admin.questions.index')
-                        ->with('success','User deleted successfully');
+                        ->with('success','Question deleted successfully');
     }
 }

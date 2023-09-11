@@ -6,10 +6,10 @@
         <div class="container-fluid">
             <div class="card-header py-3 d-flex">
                 <h1>
-                @lang('pages.tests')
+                @lang('pages.results')
                 </h1>
                 <div class="ml-auto">
-                    <a class="btn btn-success" href="{{ route('admin.tests.create') }}">New Test</a>
+                    <a class="btn btn-success" href="{{ route('admin.results.create') }}">New Result</a>
                 </div>
             </div><!-- /.col -->
         </div><!-- /.container-fluid -->
@@ -22,18 +22,22 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>Name</th>
+                <th>test_id</th>
+                <th>user_name</th>
+                <th>total_points</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-        @foreach ($tests as $test)
+        @foreach ($results as $result)
         <tr>
-            <td>{{ $test->id }}</td>
-            <td>{{ $test->name }}</td>
+            <td>{{ $result->id }}</td>
+            <td>{{ $result->test_id }}</td>
+            <td>{{ $result->user_name }}</td>
+            <td>{{ $result->total_points }}</td>
             <td>
-                <form action="{{ route('admin.tests.destroy',$test->id) }}" method="POST">
-                <a class="btn btn-primary" href="{{ route('admin.tests.edit',$test->id) }}">Edit</a>
+                <form action="{{ route('admin.results.destroy',$result->id) }}" method="POST">
+                <a class="btn btn-primary" href="{{ route('admin.results.edit',$result->id) }}">Edit</a>
                     {{-- @csrf
                     @method('DELETE') --}} 
 

@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('results', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('test_id');
-            $table->foreign('test_id')->references('id')->on('tests');
+            $table->string('user_name')->nullable();
+            $table->integer('total_points')->default(0);
+            $table->timestamps();
         });
     }
 

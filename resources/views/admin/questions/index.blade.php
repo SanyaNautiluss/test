@@ -1,4 +1,4 @@
-@extends('layouts.appi')
+@extends('layouts.appError')
     
 @section('content')
     <!-- Content Header (Page header) -->

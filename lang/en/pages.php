@@ -17,7 +17,11 @@ return [
     'test' => 'Test:',
     'tests' => 'Tests',
 
-    
+    'result' => 'Result:',
+    'results' => 'Results',
+
+    'resultQuestions' => 'Result Questions:',
+    'resultQuestions' => 'Result Questions',
 
    
     
