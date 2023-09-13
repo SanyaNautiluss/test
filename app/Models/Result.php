@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Result extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['test_id'];
+
+    public function test()
+    {
+        return $this->belongsTo(Test::class);
+    }
 }

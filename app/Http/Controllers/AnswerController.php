@@ -36,12 +36,6 @@ class AnswerController extends Controller
                         ->with('success','Answer created successfully.');
     }
 
-    public function show($id)
-    {
-        $answer = Answer::find($id);
-        return view('admin.answers.show',compact('answer'));
-    }
-
     public function edit($id)
     {
         $answer = Answer::findOrFail($id);

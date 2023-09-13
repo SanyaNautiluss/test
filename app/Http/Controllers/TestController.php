@@ -39,12 +39,6 @@ class TestController extends Controller
                         ->with('success','Test created successfully.');
     }
 
-    public function show($id)
-    {
-        $test = Test::findOrFail($id);
-        return view('admin.tests.show',compact('test'));
-    }
-
     public function edit($id)
     {
         $test = Test::findOrFail($id);

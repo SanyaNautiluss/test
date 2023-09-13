@@ -11,9 +11,9 @@ class CategoryController extends Controller
 {
     public function index()
     {
-
+        
         $categories = Category::paginate();
-        return view('admin.categories.index', compact('categories'));
+        return view('admin.categories.index', compact('categories')); 
     }
 
     public function create()
@@ -39,12 +39,6 @@ class CategoryController extends Controller
                         ->with('success','Category created successfully.');
     }
 
-    public function show($id)
-    {
-        $category = Category::findOrFail($id);
-        return view('admin.categories.show',compact('category'));
-    }
-
     public function edit($id)
     {
         $category = Category::findOrFail($id);
@@ -57,7 +51,7 @@ class CategoryController extends Controller
         $this->validate($request, [
                 'name' => 'required',
                 'tests' =>'required', 'array',
-                'tests.*' => [ 'number', Rule::exists('tests', 'id')]
+                'tests.*' => [ 'numeric', Rule::exists('tests', 'id')]
         ]);
         $category = Category::findOrFail($id);
         $category->update($request->only(['name']));

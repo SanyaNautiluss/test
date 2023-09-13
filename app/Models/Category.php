@@ -12,7 +12,7 @@ class Category extends Model
     protected $fillable = ['name'];
 
     public function tests(){
-        return $this->belongsToMany(Test::class);
+        return $this->belongsToMany(Test::class, 'category_test', 'category_id', 'test_id');
     }
 
 }

@@ -11,6 +11,8 @@ class CategoryTest extends Model
     
     protected $fillable = ['test_id', 'category_id'];
 
+    protected $table = 'category_test'; // Explicitly specify the table name
+
     public function test(){
         return $this->hasMany(Test::class);
     }
