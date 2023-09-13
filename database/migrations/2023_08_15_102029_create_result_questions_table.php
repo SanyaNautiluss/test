@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('result_questions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('question_id');
-            $table->json('selected_answers');
-            $table->boolean('is_correct')->nullable();
-            $table->timestamps();
+            $table->unsignedBigInteger('result_id');
+            $table->unsignedInteger('time_taken');
+            $table->foreign('question_id')->references('id')->on('questions');
+            $table->foreign('result_id')->references('id')->on('results');
         });
     }
 

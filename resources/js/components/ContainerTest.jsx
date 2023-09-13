@@ -14,6 +14,7 @@ const ContainerTest = () => {
         paddingBottom: '7px',
       };
       const tests = useMemo(()=>window.category.tests, [window.category.tests]);
+
         return (
             <div style={{width:'1300px', marginLeft:'300px'}}>     
                 <div className="d-flex flex-wrap" >
@@ -24,7 +25,7 @@ const ContainerTest = () => {
                             Test covering the basics of {test.name}
                             </p>
                             <a href={'/test/'+test.id}>
-                                <button className="btn btn-success" style={button}>
+                                <button className="btn btn-success" style={button} >
                                     Start Quiz
                                 </button>
                             </a>

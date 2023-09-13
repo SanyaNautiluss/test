@@ -8,14 +8,14 @@ use App\Models\Test;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Result;
+use App\Models\StartResult;
 
 class ResultController extends Controller
 {
     public function index()
     {
 
-        $results = Result::paginate();
+        $results = StartResult::paginate();
        
         return view('admin.results.index', compact('results'));
     }
@@ -37,7 +37,7 @@ class ResultController extends Controller
 
           /** @var Result $result */
       
-         $result = Result::create($request->only('test_id', ['user_id' => auth()->id()]));
+         $result = StartResult::create($request->only('test_id', ['user_id' => auth()->id()]));
         $result->questions()->sync($request->input('questions', []));
  
 
@@ -47,13 +47,13 @@ class ResultController extends Controller
 
     public function show($id)
     {
-        $result = Result::findOrFail($id);
+        $result = StartResult::findOrFail($id);
         return view('admin.results.show',compact('result'));
     }
 
     public function edit($id)
     {
-        $result = Result::findOrFail($id);
+        $result = StartResult::findOrFail($id);
         $questions=Question::pluck('question_text','id');
         $answers=Answer::pluck('answer','id');
         return view('admin.results.edit', compact('result', 'questions', 'answers'));
@@ -65,7 +65,7 @@ class ResultController extends Controller
             'question_id' => ['required', Rule::exists('questions', 'id')],
             'answer_id' => ['required', Rule::exists('answers', 'id')],
     ]);
-    $result = Result::findOrFail($id);
+    $result = StartResult::findOrFail($id);
     $result->update($request->only(['question_id', 'answer_id']));
 
 
@@ -76,7 +76,7 @@ class ResultController extends Controller
 
     public function destroy($id)
     {
-        Result::find($id)->delete();
+        StartResult::find($id)->delete();
   
         return redirect()->route('admin.results.index')
                         ->with('success','Result deleted successfully');

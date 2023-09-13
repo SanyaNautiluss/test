@@ -5,7 +5,5 @@
 @section('scripts')
 <script>
     window.category = @json($category)
-
-
 </script>
 @endsection

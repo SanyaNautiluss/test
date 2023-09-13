@@ -9,7 +9,7 @@ class ResultQuestion extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['question_id', 'selected_answers', 'is_correct'];
+    protected $fillable = ['question_id', 'result_id', 'time_taken'];
 
     public function result(){
         return $this->belongsTo(Result::class);

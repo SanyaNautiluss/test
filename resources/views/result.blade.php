@@ -1,6 +1,6 @@
 @extends('layouts.user')
 @section('content')
-<div id="quiz"></div>
+<div id="result"></div>
 @endsection
 @section('scripts')
 <script>

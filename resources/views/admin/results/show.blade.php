@@ -32,7 +32,7 @@
                             @foreach($result->questions as $question)
                                 <tr>
                                     <td>{{ $question->question_text }}</td>
-                                    <td>{{ $question->pivot->is_correct }}</td>
+                                    <td>{{ $question->is_correct }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

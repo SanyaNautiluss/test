@@ -5,11 +5,14 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import Welcome from './layouts/Welcome.jsx';
 import Quiz from './layouts/Quiz.jsx';
 import Test from './layouts/Test.jsx';
+import Result from './layouts/Result.jsx';
+
 import './index.css'
 
 const welcome = document.getElementById('welcome')
 const tests = document.getElementById('tests')
 const quiz = document.getElementById('quiz')
+const result = document.getElementById('result')
 
 if (welcome){
   ReactDOM.createRoot(welcome).render(
@@ -33,5 +36,14 @@ if (quiz){
         {console.log(window.question)}
 
     </Quiz>,
+  )
+}
+if (result){
+  ReactDOM.createRoot(quiz).render(
+    <Result>
+        {console.log(window.test)}
+        {console.log(window.question)}
+
+    </Result>,
   )
 }

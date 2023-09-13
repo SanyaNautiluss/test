@@ -23,7 +23,7 @@
             <tr>
                 <th>No</th>
                 <th>question_id</th>
-                <th>selected_answers</th>
+                <th>answer_id</th>
                 <th>is_correct</th>
                 <th>Action</th>
             </tr>
@@ -33,7 +33,7 @@
         <tr>
             <td>{{ $resultQuestion->id }}</td>
             <td>{{ $resultQuestion->question_id }}</td>
-            <td>{{ $resultQuestion->selected_answers }}</td>
+            <td>{{ $resultQuestion->answer_id }}</td>
             <td>{{ $resultQuestion->is_correct }}</td>
             <td>
                 <form action="{{ route('admin.resultQuestions.destroy',$resultQuestion->id) }}" method="POST">

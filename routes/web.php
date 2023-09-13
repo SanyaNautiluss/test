@@ -83,5 +83,7 @@ Route::middleware('auth')->group(function () {
 
  Route::get('/{category}', [\App\Http\Controllers\QuizController::class, 'indexTest'])->name('test');
  Route::get('/test/{test}', [\App\Http\Controllers\QuizController::class, 'indexQuiz'])->name('quiz');
+ Route::post('/start', [\App\Http\Controllers\QuizController::class, 'startQuiz']);
  Route::post('/quiz', [\App\Http\Controllers\QuizController::class, 'store']);
+ Route::get('/{result}', [\App\Http\Controllers\QuizController::class, 'showQuiz'])->name('result');
 
