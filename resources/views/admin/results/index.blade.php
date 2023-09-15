@@ -23,8 +23,9 @@
             <tr>
                 <th>No</th>
                 <th>test_id</th>
-                <th>user_name</th>
                 <th>total_points</th>
+                <th>time_taken</th>
+                <th>answers</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -33,8 +34,9 @@
         <tr>
             <td>{{ $result->id }}</td>
             <td>{{ $result->test_id }}</td>
-            <td>{{ $result->user_name }}</td>
             <td>{{ $result->total_points }}</td>
+            <td>{{ $result->time_taken }}</td>
+            <td>{{ $result->answers }}</td>
             <td>
                 <form action="{{ route('admin.results.destroy',$result->id) }}" method="POST">
                 <a class="btn btn-primary" href="{{ route('admin.results.edit',$result->id) }}">Edit</a>

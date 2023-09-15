@@ -34,15 +34,16 @@ if (quiz){
     <Quiz>
         {console.log(window.test)}
         {console.log(window.question)}
+        {console.log(window.categories)}
 
     </Quiz>,
   )
 }
 if (result){
-  ReactDOM.createRoot(quiz).render(
+  ReactDOM.createRoot(result).render(
     <Result>
-        {console.log(window.test)}
         {console.log(window.question)}
+        {console.log(window.responseData)}
 
     </Result>,
   )

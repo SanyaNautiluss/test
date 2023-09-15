@@ -2,27 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Question;
-use App\Models\Answer;
 use App\Models\Test;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\StartResult;
+use App\Models\Result;
 
 class ResultController extends Controller
 {
     public function index()
     {
 
-        $results = StartResult::paginate();
+        $results = Result::paginate();
        
         return view('admin.results.index', compact('results'));
     }
 
     public function create()
     {   
-        $tests = Test::with('questions.answers')->get();
+        $tests = Test::paginate();
 
         return view('admin.results.create', compact('tests'));
     }
@@ -31,14 +29,14 @@ class ResultController extends Controller
     {
         $request->validate([
             'test_id' => ['required', Rule::exists('tests', 'id')],
-            'question_id' => ['required', Rule::exists('questions', 'id')],
-            'answer_id' => ['required', Rule::exists('answers', 'id')],
+            'total_points' => 'required',
+            'time_taken' => 'required',
         ]);
 
           /** @var Result $result */
       
-         $result = StartResult::create($request->only('test_id', ['user_id' => auth()->id()]));
-        $result->questions()->sync($request->input('questions', []));
+         Result::create($request->only('test_id', 'total_points', 'time_taken'));
+       
  
 
         return redirect()->route('admin.results.index')
@@ -47,26 +45,26 @@ class ResultController extends Controller
 
     public function show($id)
     {
-        $result = StartResult::findOrFail($id);
+        $result = Result::findOrFail($id);
         return view('admin.results.show',compact('result'));
     }
 
     public function edit($id)
     {
-        $result = StartResult::findOrFail($id);
-        $questions=Question::pluck('question_text','id');
-        $answers=Answer::pluck('answer','id');
-        return view('admin.results.edit', compact('result', 'questions', 'answers'));
+        $result = Result::findOrFail($id);
+        $test=Test::pluck('name','id');
+        return view('admin.results.edit', compact('result', 'test'));
     }
 
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'question_id' => ['required', Rule::exists('questions', 'id')],
-            'answer_id' => ['required', Rule::exists('answers', 'id')],
+            'test_id' => ['required', Rule::exists('tests', 'id')],
+            'total_points' => 'required',
+            'time_taken' => 'required',
     ]);
-    $result = StartResult::findOrFail($id);
-    $result->update($request->only(['question_id', 'answer_id']));
+    $result = Result::findOrFail($id);
+    $result->update($request->only(['test_id', 'total_points', 'time_taken']));
 
 
 
@@ -76,7 +74,7 @@ class ResultController extends Controller
 
     public function destroy($id)
     {
-        StartResult::find($id)->delete();
+        Result::find($id)->delete();
   
         return redirect()->route('admin.results.index')
                         ->with('success','Result deleted successfully');

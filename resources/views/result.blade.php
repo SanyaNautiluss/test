@@ -1,10 +1,10 @@
 @extends('layouts.user')
 @section('content')
-<div id="result"></div>
+<div id="result" ></div>
 @endsection
 @section('scripts')
 <script>
-    window.test = @json($test),
-    window.question = @json($question)
+        window.question = @json($question),
+        window.responseData = @json($responseData)
 </script>
 @endsection

@@ -5,6 +5,8 @@
 @section('scripts')
 <script>
     window.test = @json($test),
-    window.question = @json($question)
+    window.question = @json($question),
+    window.categories = @json($categories)
+
 </script>
 @endsection

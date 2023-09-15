@@ -7,45 +7,18 @@ export default function TypographyQuiz() {
   const [visibleQuestionIndex, setVisibleQuestionIndex] = useState(0);
   const isFirstQuestion = visibleQuestionIndex === 0;
   const isLastQuestion = visibleQuestionIndex === questions.length - 1;
-  const [timer, setTimer] = useState(null);
   const [elapsedTime, setElapsedTime] = useState(0);
 
-  const [testId, setTestId] = useState(null); // State to store the test_id
-
-  // Function to extract the test_id from the first question
-  const extractTestId = () => {
-      setTestId(questions[0].test_id);
-  };
+    useEffect(() => {
+      const timerInterval = setInterval(() => {
+        setElapsedTime((prevElapsedTime) => prevElapsedTime + 1);
+      }, 1000);
   
-  // Send the test_id to the Laravel controller when the component mounts
-  useEffect(() => {
-    extractTestId(); // Extract the test_id
-  
-    // Check if testId is not null before sending it
-    if (testId) { console.log(testId)
-      axios.post('/start', { testId })
-        .then((response) => {
-          console.log(response.data);
-        })
-        .catch((error) => {
-          console.error(error);
-        }); 
-        
-            // Start the timer when the component mounts
-        const startTime = Date.now();
-        setTimer(setInterval(() => {
-          const currentTime = Date.now();
-          setElapsedTime((currentTime - startTime) / 1000); // Convert to seconds
-        }, 1000));
-      }
-
-      // Clean up the timer when the component unmounts
+      // Cleanup the timer when the component unmounts
       return () => {
-        if (timer) {
-          clearInterval(timer);
-        }
-      }
-    }, [testId]);
+        clearInterval(timerInterval);
+      };
+    }, []);
 
   const showNextQuestion = () => {
     const nextIndex = (visibleQuestionIndex + 1) % questions.length;
@@ -103,12 +76,32 @@ export default function TypographyQuiz() {
     }
   };
 
+  // Get the test_id from the first question
+  const firstQuestion = questions[0];
+  const testId = firstQuestion.test_id; // Replace 'test_id' with the actual key
+   
+  // Calculate minutes and seconds
+  const minutes = Math.floor(elapsedTime / 60);
+  const seconds = elapsedTime % 60;
+  
+  // Format the elapsedTime as "minutes:seconds"
+  const formattedElapsedTime = `${minutes}:${seconds}`;
+
+
+   // Create the data to send in the POST request
+   const postData = {
+     testId, // Include the test_id in the data
+     userAnswers,
+     elapsedTime: formattedElapsedTime, // Include the formatted elapsedTime in the data
+    };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    axios.post('/quiz', { userAnswers })
+    console.log(postData)
+    axios.post('/quiz', { postData })
       .then((response) => {
         console.log(response.data);
+        window.location.href=response.data.resulturl
       })
       .catch((error) => {
         console.error(error);
@@ -149,8 +142,7 @@ export default function TypographyQuiz() {
           ))}
           {addDefaultAnswerIfNecessary(question)}
           <a>
-          <h5 className='pt-2' style={{marginLeft:'1160px', marginBottom:'-20px'}}>{Math.floor(elapsedTime / 60)}:{Math.floor(elapsedTime % 60)}</h5>
-
+            <h5 className='pt-2' style={{marginLeft:'1160px', marginBottom:'-20px'}}>{Math.floor(elapsedTime / 60)}:{Math.floor(elapsedTime % 60)}</h5>
             {!isFirstQuestion && (
               <button className="btn btn-danger" onClick={showPreviousQuestion}>
                 Previous Question
@@ -160,9 +152,9 @@ export default function TypographyQuiz() {
               <button className="btn btn-success" onClick={showNextQuestion}>
                 Next Question
               </button>
-            )}
+            )}      
             {isLastQuestion && (
-              <button type="submit" className="btn btn-primary" onClick={handleSubmit}>
+              <button type="submit" className="btn btn-primary" onClick={handleSubmit} >
                 End Quiz
               </button>
             )}

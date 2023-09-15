@@ -7,19 +7,23 @@
 
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>@lang('pages.test')</strong>
-                <input type="text" name="name" class="form-control" placeholder="Name">
+                <label for="test">@lang('pages.test')</label>
+                <div class="form-group">
+                    <select name="test_id" multiple>
+                        @foreach($test as $id => $test)
+                            <option value="{{ $id }}">{{ $test }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <strong>total_points</strong>
+                    <input type="text" name="total_points" class="form-control" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <strong>time_taken</strong>
+                    <input type="text" name="time_taken" class="form-control" placeholder="Name">
+                </div>
             </div>
-            <label for="test">@lang('pages.category')</label>
-            <div class="form-group">
-                <select name="categories[]" multiple>
-                    @foreach($categories as $category)
-                        <option value="{{$category->id}}">{{$category->name}}</option>
-                    @endforeach
-                </select>
-            </div>
-        </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
             <a class="btn btn-primary" href="{{ route('admin.results.index') }}"> Back</a>
             <button type="submit" class="btn btn-primary">Submit</button>
