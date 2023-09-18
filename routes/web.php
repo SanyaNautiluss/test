@@ -68,22 +68,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('result/update/{id}', [\App\Http\Controllers\ResultController::class, 'update'])->name('admin.results.update');
     Route::delete('result/destroy/{id}', [\App\Http\Controllers\ResultController::class, 'destroy'])->name('admin.results.destroy');
 
-    //resultQuestions
-    Route::get('resultQuestion', [\App\Http\Controllers\ResultQuestionController::class, 'index'])->name('admin.resultQuestions.index');
-    Route::get('resultQuestion/create', [\App\Http\Controllers\ResultQuestionController::class, 'create'])->name('admin.resultQuestions.create');
-    Route::post('resultQuestion/store', [\App\Http\Controllers\ResultQuestionController::class, 'store'])->name('admin.resultQuestions.store');
-    Route::get('resultQuestion/show/{id}', [\App\Http\Controllers\ResultQuestionController::class, 'show'])->name('admin.resultQuestions.show');
-    Route::get('resultQuestion/edit/{id}', [\App\Http\Controllers\ResultQuestionController::class, 'edit'])->name('admin.resultQuestions.edit');
-    Route::patch('resultQuestion/update/{id}', [\App\Http\Controllers\ResultQuestionController::class, 'update'])->name('admin.resultQuestions.update');
-    Route::delete('resultQuestion/destroy/{id}', [\App\Http\Controllers\ResultQuestionController::class, 'destroy'])->name('admin.resultQuestions.destroy');
-    
 });
  //Frontend Controller
  Route::get('/', [\App\Http\Controllers\QuizController::class, 'indexWelcome'])->name('welcome');
-
+ Route::get('/results/{resultId}', [\App\Http\Controllers\QuizController::class, 'getResultData']);
  Route::get('/{category}', [\App\Http\Controllers\QuizController::class, 'indexTest'])->name('test');
  Route::get('/test/{test}', [\App\Http\Controllers\QuizController::class, 'indexQuiz'])->name('quiz');
- Route::post('/start', [\App\Http\Controllers\QuizController::class, 'startQuiz']);
  Route::post('/quiz', [\App\Http\Controllers\QuizController::class, 'store']);
- Route::get('/{result}', [\App\Http\Controllers\QuizController::class, 'showQuiz'])->name('result');
-

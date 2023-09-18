@@ -58,14 +58,6 @@
                     </p>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="{{ route('admin.resultQuestions.index') }}" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
-                    <p>
-                        {{ __('Result Questions') }}
-                    </p>
-                </a>
-            </li>
         </ul>
     </nav>
     <!-- /.sidebar-menu -->
