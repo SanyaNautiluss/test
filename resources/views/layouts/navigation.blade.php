@@ -1,3 +1,6 @@
+<!-- libs for user script -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
 <!-- Sidebar -->
 <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
@@ -6,14 +9,33 @@
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
             data-accordion="false">
-            <li class="nav-item">
-                <a href="{{ route('users.index') }}" class="nav-link">
-                    <i class="nav-icon fas fa-handshake"></i>
-                    <p>
-                        {{ __('Users') }}
-                    </p>
-                </a>
-            </li>
+            <li  id="toggleLinks" class="nav-item"><a href="#" class="nav-link"> <i class="fa fa-briefcase ml-2 mr-2"></i>User Management</a></li>
+            <div class="nav nav-pills nav-sidebar flex-column hide-links" id="linksContainer">
+                <li class="nav-item">
+                    <a href="{{ route('admin.permissions.index') }}" class="nav-link">
+                        <i class="fa fa-briefcase"></i>
+                        <p>
+                            {{ __('Permissions') }}
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.roles.index') }}" class="nav-link">
+                        <i class="fa fa-briefcase ml-2"></i>
+                        <p>
+                            {{ __('Roles') }}
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.users.index') }}" class="nav-link">
+                        <i class="fa fa-user ml-4"></i>
+                        <p>
+                            {{ __('Users') }}
+                        </p>
+                    </a>
+                </li>
+            </div>
 
             <li class="nav-item">
                 <a href="{{ route('admin.categories.index') }}" class="nav-link">
@@ -63,3 +85,17 @@
     <!-- /.sidebar-menu -->
 </div>
 <!-- /.sidebar -->
+
+<style>
+    .hide-links {
+        display: none;
+    }
+</style>
+
+<script>
+    $(document).ready(function () {
+        $("#toggleLinks").click(function () {
+            $("#linksContainer").toggle();
+        });
+    });
+</script>

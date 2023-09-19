@@ -1,4 +1,5 @@
-import React, {useMemo, useRef, useState} from 'react';
+import React, {useMemo, useRef, useState, useEffect} from 'react';
+
 import reactLogo from '../assets/react.svg';
 import miniLogo from '../assets/mini.svg';
 import mini2Logo from '../assets/minireact.svg';
@@ -6,6 +7,20 @@ import '../../css/Navbar.css'
 
 
 const Navbar = () => {
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    // Fetch user information when the component mounts
+    fetch('/userName')
+      .then((response) => response.json())
+      .then((data) => {
+        setUser(data.user);
+      });
+  }, []);
+console.log(user)
+  const handleLogout = () => {
+    // Implement your logout logic here
+  };
+
   const divstyle = {
     scrollBehavior: 'smooth',
     display:'flex',
@@ -21,7 +36,7 @@ const Navbar = () => {
    };
 
 
-   const Testitems = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6', 'Item 7', 'Item 8', 'Item 9', 'Item 10', 'Item 11', 'Item 12', 'Item 13', 'Item 14', 'Item 15', 'Item 16', 'Item 17', 'Item 18', 'Item 19', 'Item 20', 'Item 21', 'Item 22'];
+  const Testitems = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6', 'Item 7', 'Item 8', 'Item 9', 'Item 10', 'Item 11', 'Item 12', 'Item 13', 'Item 14', 'Item 15', 'Item 16', 'Item 17', 'Item 18', 'Item 19', 'Item 20', 'Item 21', 'Item 22'];
 
   const scrl = useRef(null);
   const categories = useMemo(()=>window.categories, [window.categories]);
@@ -90,8 +105,17 @@ const Navbar = () => {
           <div className="navbar-nav ml-auto">
             <a id='button' href=""><button className="btn  mr-2" ><img src={miniLogo} /> Bootcamps</button></a>
             <a id='button' href=""><button className="btn  mr-2"><img src={mini2Logo}/> Spaces</button></a>
-            <a href="/login"><button className="btn btn-success rounded-pill" style={{width:'100px', marginRight:'-30px', position:'relative'}} >Log in</button></a>
-            <a id='Navbar' href="/register"><button  className="btn pl-4"  style={{width:'100px', textAlign:'right'}}>Register</button></a>
+              {user ? (
+              <div>
+              <a>Welcome, {user.name}</a>
+              <button onClick={handleLogout}>Logout</button>
+              </div>
+              ) : (
+              <div>
+              <a href="/login"><button className="btn btn-success rounded-pill" style={{width:'100px', marginRight:'-30px', position:'relative'}} >Log in</button></a>
+              <a id='Navbar' href="/register"><button  className="btn pl-4"  style={{width:'100px', textAlign:'right'}}>Register</button></a>
+              </div>
+              )}
           </div>
         </nav>
         
@@ -104,7 +128,7 @@ const Navbar = () => {
           <ul ref={scrl} className="btn-dark" style={divstyle} >
               {categories.map((category, index) => (
                 <li key={index} className="btn btn-dark" style={{marginTop:'-5px'}} >
-                  <a className="nav-link text-nowrap" href={category.id} style={white}>
+                  <a className="nav-link text-nowrap" href={`/${category.id}`} style={white}>
                     {category.name}
                   </a>
                 </li>

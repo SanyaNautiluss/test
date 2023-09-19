@@ -6,6 +6,7 @@ use App\Models\Test;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Question;
 use App\Models\Result;
 
 class ResultController extends Controller
@@ -29,13 +30,13 @@ class ResultController extends Controller
     {
         $request->validate([
             'test_id' => ['required', Rule::exists('tests', 'id')],
-            'total_points' => 'required',
-            'time_taken' => 'required',
         ]);
 
           /** @var Result $result */
       
-         Result::create($request->only('test_id', 'total_points', 'time_taken'));
+          $result = $request->only('test_id') + ['total_points' => 0, 'time_taken' => 0];
+          
+          Result::create($result);
        
  
 
@@ -45,31 +46,10 @@ class ResultController extends Controller
 
     public function show($id)
     {
+
         $result = Result::findOrFail($id);
-        return view('admin.results.show',compact('result'));
-    }
-
-    public function edit($id)
-    {
-        $result = Result::findOrFail($id);
-        $test=Test::pluck('name','id');
-        return view('admin.results.edit', compact('result', 'test'));
-    }
-
-    public function update(Request $request, $id)
-    {
-        $this->validate($request, [
-            'test_id' => ['required', Rule::exists('tests', 'id')],
-            'total_points' => 'required',
-            'time_taken' => 'required',
-    ]);
-    $result = Result::findOrFail($id);
-    $result->update($request->only(['test_id', 'total_points', 'time_taken']));
-
-
-
-        return redirect()->route('admin.results.index')
-                        ->with('success','Result updated successfully');
+        $questions = Question::where('test_id', $result->test_id)->with(['answers'])->get();
+        return view('admin.results.show',compact('result', 'questions'));
     }
 
     public function destroy($id)

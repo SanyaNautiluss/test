@@ -6,10 +6,10 @@
         <div class="container-fluid">
             <div class="card-header py-3 d-flex">
                 <h1>
-                @lang('pages.results')
+                    Permissions
                 </h1>
                 <div class="ml-auto">
-                    <a class="btn btn-success" href="{{ route('admin.results.create') }}">New Result</a>
+                    <a class="btn btn-success" href="{{ route('admin.permissions.create') }}">New Permission</a>
                 </div>
             </div><!-- /.col -->
         </div><!-- /.container-fluid -->
@@ -22,22 +22,18 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>test_id</th>
-                <th>total_points</th>
-                <th>time_taken</th>
+                <th>Name</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-        @foreach ($results as $result)
+        @foreach ($permissions as $permission)
         <tr>
-            <td>{{ $result->id }}</td>
-            <td>{{ $result->test_id }}</td>
-            <td>{{ $result->total_points }}</td>
-            <td>{{ $result->time_taken }}</td>
+            <td>{{ $permission->id }}</td>
+            <td>{{ $permission->name }}</td>
             <td>
-                <form action="{{ route('admin.results.destroy',$result->id) }}" method="POST">
-                <a class="btn btn-primary" href="{{ route('admin.results.show',$result->id) }}">Show</a>
+                <form action="{{ route('admin.permissions.destroy',$permission->id) }}" method="POST">
+                    <a class="btn btn-primary" href="{{ route('admin.permissions.edit',$permission->id) }}">Edit</a>
                     {{-- @csrf
                     @method('DELETE') --}} 
 

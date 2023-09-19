@@ -6,10 +6,10 @@
         <div class="container-fluid">
             <div class="card-header py-3 d-flex">
                 <h1>
-                @lang('pages.results')
+                    Roles
                 </h1>
                 <div class="ml-auto">
-                    <a class="btn btn-success" href="{{ route('admin.results.create') }}">New Result</a>
+                    <a class="btn btn-success" href="{{ route('admin.roles.create') }}">New Role</a>
                 </div>
             </div><!-- /.col -->
         </div><!-- /.container-fluid -->
@@ -22,22 +22,24 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>test_id</th>
-                <th>total_points</th>
-                <th>time_taken</th>
+                <th>Name</th>
+                <th>Permissions</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-        @foreach ($results as $result)
+        @foreach ($roles as $role)
         <tr>
-            <td>{{ $result->id }}</td>
-            <td>{{ $result->test_id }}</td>
-            <td>{{ $result->total_points }}</td>
-            <td>{{ $result->time_taken }}</td>
+            <td>{{ $role->id }}</td>
+            <td>{{ $role->name }}</td>
             <td>
-                <form action="{{ route('admin.results.destroy',$result->id) }}" method="POST">
-                <a class="btn btn-primary" href="{{ route('admin.results.show',$result->id) }}">Show</a>
+                @foreach($role->permissions as $key => $permission)
+                    <span class="badge badge-info">{{ $permission->name }}</span>
+                @endforeach
+            </td>
+            <td>
+                <form action="{{ route('admin.roles.destroy',$role->id) }}" method="POST">
+                    <a class="btn btn-primary" href="{{ route('admin.roles.edit',$role->id) }}">Edit</a>
                     {{-- @csrf
                     @method('DELETE') --}} 
 

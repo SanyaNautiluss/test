@@ -13,8 +13,8 @@ export default function TypographyResult() {
   return (
     <blockquote className="blockquote text-left" style={{ marginLeft: '300px' }}>
       <p className="h1 mb-4">{results.test_name} Test Results</p>
-      <p className="h6 mb-4">Score: {results.total_points} of {questions.length}</p>
-      <p className="mb-4">{percentage}% Correct:</p>
+      <p className="h4 mb-4">Score: {results.total_points} of {questions.length} ({percentage}% Correct);</p>
+      <p className="h6 mb-4">Time spent: {results.time_taken}</p>
 
       {questions.map((question, index) => (
         <div className="h2 mb-4" key={question.id}>
@@ -28,7 +28,7 @@ export default function TypographyResult() {
             <div
               className="input-group mb-1"
               style={{
-                width: '1200px',
+                width: '1250px',
                 position: 'relative',
                 backgroundColor:
                   answer.is_correct === 1
@@ -42,13 +42,13 @@ export default function TypographyResult() {
               <div className="input-group-prepend">
 
                 {/* Checkmark icon for correct answer */}
-                {answer.is_correct === 1 && (
+                {answer.is_correct === 1 && results.answers.includes(answer.id.toString()) && (
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg  mt-2 ml-1">
                     <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
                   </svg>
                 )}
                 {/* Cross icon for incorrect answer */}
-                {answer.is_correct !== 1 && (
+                {answer.is_correct !== 1 && results.answers.includes(answer.id.toString()) && (
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg mt-2 ml-1" >
                     <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
                   </svg>

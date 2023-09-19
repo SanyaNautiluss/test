@@ -1,3 +1,4 @@
+
 @extends('layouts.appError')
     
 @section('content')
@@ -6,10 +7,10 @@
         <div class="container-fluid">
             <div class="card-header py-3 d-flex">
                 <h1>
-                @lang('pages.results')
+                    Users
                 </h1>
                 <div class="ml-auto">
-                    <a class="btn btn-success" href="{{ route('admin.results.create') }}">New Result</a>
+                    <a class="btn btn-success" href="{{ route('admin.users.create') }}">New User</a>
                 </div>
             </div><!-- /.col -->
         </div><!-- /.container-fluid -->
@@ -22,22 +23,26 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>test_id</th>
-                <th>total_points</th>
-                <th>time_taken</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-        @foreach ($results as $result)
+        @foreach ($users as $user)
         <tr>
-            <td>{{ $result->id }}</td>
-            <td>{{ $result->test_id }}</td>
-            <td>{{ $result->total_points }}</td>
-            <td>{{ $result->time_taken }}</td>
+            <td>{{ $user->id }}</td>
+            <td>{{ $user->name }}</td>
+            <td>{{ $user->email }}</td>
             <td>
-                <form action="{{ route('admin.results.destroy',$result->id) }}" method="POST">
-                <a class="btn btn-primary" href="{{ route('admin.results.show',$result->id) }}">Show</a>
+                @foreach($user->roles as $key => $role)
+                    <span class="badge badge-info">{{ $role->name }}</span>
+                @endforeach
+            </td>
+            <td>
+                <form action="{{ route('admin.users.destroy',$user->id) }}" method="POST">
+                    <a class="btn btn-primary" href="{{ route('admin.users.edit',$user->id) }}">Edit</a>
                     {{-- @csrf
                     @method('DELETE') --}} 
 
@@ -54,4 +59,5 @@
 </div>
     <!-- /.content -->
 @endsection
+
 

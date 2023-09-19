@@ -9,7 +9,7 @@ const Footer = () => {
   const categories = useMemo(()=>window.categories, [window.categories]);
 
   return (
-    <footer style={{width:'1600px', marginLeft:'300px', paddingTop:'100px'}}>
+    <footer style={{width:'1600px', marginLeft:'280px', paddingTop:'100px'}}>
       <div>
         <div id='Footer'>
           <button style={button} className="btn btn-dark mx-2">Spaces</button>
