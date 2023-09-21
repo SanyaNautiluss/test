@@ -14,6 +14,7 @@ class TestController extends Controller
 
         $tests = Test::paginate();
         return view('admin.tests.index', compact('tests'));
+
     }
 
     public function create()

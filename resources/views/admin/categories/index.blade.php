@@ -15,7 +15,6 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
     <!-- Main content -->
 <div class="card-body">
     <table class="table table-bordered table-striped table-hover datatable datatable-category" cellspacing="0" width="100%">

@@ -13,24 +13,16 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-
-
-
 Auth::routes();
 
- 
-
-
-    Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
-    Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
-    Route::view('about', 'about')->name('about');
-    Route::get('/userName', [\App\Http\Controllers\AuthController::class, 'getUser']);
-
     Route::middleware(['auth', 'role'])->group(function () {
-        Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-        //users
+        Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+        Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
+        Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+        Route::view('about', 'about')->name('about');  
+              
+         //users
         Route::get('user', [\App\Http\Controllers\UserController::class, 'index'])->name('admin.users.index');
         Route::get('user/create', [\App\Http\Controllers\UserController::class, 'create'])->name('admin.users.create');
         Route::post('user/store', [\App\Http\Controllers\UserController::class, 'store'])->name('admin.users.store');

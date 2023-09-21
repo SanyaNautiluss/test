@@ -4,6 +4,7 @@
 @endsection
 @section('scripts')
 <script>
-    window.categories = @json($categories)
+    window.categories = @json($categories),
+    window.user = {!! auth()->user() !!};
 </script>
 @endsection

@@ -1,26 +1,12 @@
-import React, {useMemo, useRef, useState, useEffect} from 'react';
-
+import React, {useMemo, useRef, useState} from 'react';
 import reactLogo from '../assets/react.svg';
 import miniLogo from '../assets/mini.svg';
 import mini2Logo from '../assets/minireact.svg';
 import '../../css/Navbar.css'
-
+import '../../css/User.css'
+import axios from 'axios';
 
 const Navbar = () => {
-  const [user, setUser] = useState(null);
-  useEffect(() => {
-    // Fetch user information when the component mounts
-    fetch('/userName')
-      .then((response) => response.json())
-      .then((data) => {
-        setUser(data.user);
-      });
-  }, []);
-console.log(user)
-  const handleLogout = () => {
-    // Implement your logout logic here
-  };
-
   const divstyle = {
     scrollBehavior: 'smooth',
     display:'flex',
@@ -40,12 +26,33 @@ console.log(user)
 
   const scrl = useRef(null);
   const categories = useMemo(()=>window.categories, [window.categories]);
+  const user = useMemo(()=>window.user, [window.user]);
   const [scrollX, setscrollX] = useState(0); // For detecting start scroll postion
   const slide = (shift) => {
     scrl.current.scrollLeft += shift;
     setscrollX(scrollX + shift); // Updates the latest scrolled postion
     };
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+  const logout = () => {
+    // Add logic to send a request to Laravel to log out the user
+    // For example, you can use axios to make an HTTP POST request to a logout route.
+    // Replace 'logout-route' with your actual Laravel route.
+    axios.post('/logout')
+      .then(response => {
+        // Handle successful logout, e.g., redirect to the login page.
+        window.location.href = '/'; // Redirect to the login page
+      })
+      .catch(error => {
+        // Handle any errors that may occur during logout.
+        console.error('Logout error:', error);
+      });
+  };
+  
   return (
     <div>
       <div className="fixed-top">
@@ -104,38 +111,46 @@ console.log(user)
 
           <div className="navbar-nav ml-auto">
             <a id='button' href=""><button className="btn  mr-2" ><img src={miniLogo} /> Bootcamps</button></a>
-            <a id='button' href=""><button className="btn  mr-2"><img src={mini2Logo}/> Spaces</button></a>
+            <a id='button' href=""><button className="btn  mr-2"><img src={mini2Logo}/> Spaces</button></a>  
+            <div>
               {user ? (
-              <div>
-              <a>Welcome, {user.name}</a>
-              <button onClick={handleLogout}>Logout</button>
-              </div>
-              ) : (
-              <div>
-              <a href="/login"><button className="btn btn-success rounded-pill" style={{width:'100px', marginRight:'-30px', position:'relative'}} >Log in</button></a>
-              <a id='Navbar' href="/register"><button  className="btn pl-4"  style={{width:'100px', textAlign:'right'}}>Register</button></a>
-              </div>
+                <div className="user-dropdown">
+                  <a href="/home"><button className="btn btn-success rounded-pill" style={{width:'100px', marginRight:'-30px', position:'relative'}} >Home</button></a>
+                  <button className="btn btn-success rounded-pill ml-2" style={{position:'relative', zIndex:'1'}} onClick={toggleDropdown} >{user.name}</button>
+                  {isOpen && (
+                    <div className="dropdown-content">
+                      <button onClick={logout}>Logout</button>
+                    </div>
+                  )}
+                </div>
+                ) : (
+                <div>
+                <a href="/login"><button className="btn btn-success rounded-pill" style={{width:'100px', marginRight:'-30px', position:'relative'}} >Log in</button></a>
+                <a id='Navbar' href="/register"><button  className="btn pl-4"  style={{width:'100px', textAlign:'right'}}>Register</button></a>
+                </div>
               )}
+            </div>
+           
           </div>
         </nav>
         
         <div style={white}>
           {scrollX !== 0 && (
-            <button className="btn-dark" style={{ height:'40px',  zIndex: 5}} onClick={() => slide(-250)}>
+            <button className="btn-dark" style={{ height:'40px',  zIndex: 1}} onClick={() => slide(-250)}>
               <div className='arrow left'></div>
             </button>
           )}
           <ul ref={scrl} className="btn-dark" style={divstyle} >
-              {categories.map((category, index) => (
+         {categories.map((category, index) => (
                 <li key={index} className="btn btn-dark" style={{marginTop:'-5px'}} >
                   <a className="nav-link text-nowrap" href={`/${category.id}`} style={white}>
                     {category.name}
                   </a>
                 </li>
-              ))}     
+              ))} 
           </ul>
           {scrollX !== 1 && (
-            <button className="btn-dark" style={{ height:'40px', marginLeft:'-10px',  zIndex: 5}} onClick={() => slide(+250)}>
+            <button className="btn-dark" style={{ height:'40px', marginLeft:'-10px',  zIndex: 1}} onClick={() => slide(+250)}>
               <div className='arrow right'></div>
             </button>
           )}

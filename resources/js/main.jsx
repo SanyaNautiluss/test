@@ -6,7 +6,7 @@ import Welcome from './layouts/Welcome.jsx';
 import Quiz from './layouts/Quiz.jsx';
 import Test from './layouts/Test.jsx';
 import Result from './layouts/Result.jsx';
-
+import CategorySelector from './components/CategorySelector.jsx';
 import './index.css'
 
 const welcome = document.getElementById('welcome')
@@ -17,7 +17,9 @@ const result = document.getElementById('result')
 if (welcome){
   ReactDOM.createRoot(welcome).render(
     <Welcome>
+        {console.log(window.user)}
         {console.log(window.categories)}
+
     </Welcome>,
   )
 }
@@ -46,5 +48,12 @@ if (result){
         {console.log(window.responseData)}
 
     </Result>,
+  )
+}
+if (categorySelector){
+  ReactDOM.createRoot(categorySelector).render(
+    <CategorySelector>
+        {console.log(window.categories)}
+    </CategorySelector>,
   )
 }

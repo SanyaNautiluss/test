@@ -27,3 +27,8 @@
     </div>
 </form>
 @endsection 
+@section('scripts')
+<script>
+    window.categories = @json($categories)
+</script>
+@endsection

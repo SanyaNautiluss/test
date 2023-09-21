@@ -82,6 +82,7 @@
             </li>
         </ul>
     </nav>
+
     <!-- /.sidebar-menu -->
 </div>
 <!-- /.sidebar -->
@@ -90,12 +91,19 @@
     .hide-links {
         display: none;
     }
+    .hide-link {
+        display: none;
+    }
 </style>
-
 <script>
     $(document).ready(function () {
         $("#toggleLinks").click(function () {
             $("#linksContainer").toggle();
+        });
+    });
+    $(document).ready(function () {
+        $("#toggleLink").click(function () {
+            $("#linkContainer").toggle();
         });
     });
 </script>

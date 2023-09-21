@@ -30,6 +30,5 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
         View::share('categories', Category::all());
-
     }
 }
